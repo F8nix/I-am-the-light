@@ -8,9 +8,14 @@ public class LightPickupLogical : MonoBehaviour
     // Start is called before the first frame update
     
     public LightPickupGraphical lightPickupGraphical;
+
+    public float radius;
+    public Collider2D[] lightsToPickUp;
+
+    public LayerMask currencyLayer;
     void Start()
     {
-        
+        radius = gameObject.GetComponent<CircleCollider2D>().radius;
     }
 
     // Update is called once per frame
@@ -26,7 +31,15 @@ public class LightPickupLogical : MonoBehaviour
         lightPickupGraphical.onDissappearence -= PickupLight;
     }
 
+
     public void PickupLight() {
-        Debug.Log("Pick Up!");
+        lightsToPickUp = Physics2D.OverlapCircleAll(transform.position, radius, currencyLayer);
+        if(lightsToPickUp.Length < 1){
+            Debug.Log("Nothing to pick up");
+        }
+        foreach (Collider2D light in lightsToPickUp)
+        {
+            Destroy(light.gameObject);
+        }
     }
 }
