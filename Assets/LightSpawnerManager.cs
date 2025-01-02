@@ -16,9 +16,9 @@ public class LightSpawnerManager : MonoBehaviour
 
     public Vector2 areaBottomLeftCorner;
 
-    public GameObject playerChar;
+    public GameObject spawnPoint;
 
-    private Vector2 playerCharStartPos;
+    private Vector2 playerSpawnPointPos;
 
     //with time add maxLight/area of spawning via SO
 
@@ -43,11 +43,11 @@ public class LightSpawnerManager : MonoBehaviour
         areaWidth = 30;
         areaHeight = 30;
 
-        playerCharStartPos = playerChar.transform.position;
+        playerSpawnPointPos = spawnPoint.transform.position;
 
         areaBottomLeftCorner = new Vector2(0, 0);
 
-        areaBottomLeftCorner = areaBottomLeftCorner + playerCharStartPos - new Vector2(areaWidth/2, areaHeight/2);
+        areaBottomLeftCorner = areaBottomLeftCorner + playerSpawnPointPos - new Vector2(areaWidth/2, areaHeight/2);
         Debug.Log(areaBottomLeftCorner);
     }
 

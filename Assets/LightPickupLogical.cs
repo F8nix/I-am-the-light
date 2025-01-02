@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class LightPickupLogical : MonoBehaviour
 {
+    public EnergyManager energyManagerRef;
+
     [SerializeField] public List<MultiplierData> multipliersList = new List<MultiplierData>();
     
     public LightPickupGraphical lightPickupGraphical;
@@ -18,6 +20,7 @@ public class LightPickupLogical : MonoBehaviour
 
 
     public int cumulatedCurrency;
+    public float cumulatedEnergy;
     public float firstMultiplier;
     public int firstMultiplierReq;
 
@@ -48,6 +51,7 @@ public class LightPickupLogical : MonoBehaviour
         
         float multiplier = 0;
         cumulatedCurrency = 0;
+        cumulatedEnergy = 0;
         
         if(lightsToPickUp.Length < 1){
             Debug.Log("Nothing to pick up");
@@ -57,12 +61,14 @@ public class LightPickupLogical : MonoBehaviour
         {
             LightSpawnerManager.Instance.currentLight--;
             LightCurrencyOne currency = light.gameObject.GetComponent<LightCurrencyOne>();
-            cumulatedCurrency += currency.amount;
+            cumulatedCurrency += currency.lightAmount;
+            cumulatedEnergy += currency.energyAmount;
             Destroy(light.gameObject);
         }
         multiplier = CalculateMultiplier(lightsToPickUp.Length);
         if(multiplier > 0){
             playerLightCurrency.CurrentLight += multiplier * cumulatedCurrency;
+            energyManagerRef.remainingEnergy += multiplier * cumulatedEnergy;
         } else {
             Debug.Log("CalcMulti func didn't work? Multiplier is: " + multiplier + " zero right?");
         }
