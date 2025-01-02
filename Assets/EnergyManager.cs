@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
+using System;
 
 public class EnergyManager : MonoBehaviour
 {
@@ -17,9 +19,15 @@ public class EnergyManager : MonoBehaviour
     public float energyDrainMultiplierUpgrade;
     public float energyDrainUpgradeTime;
 
+    public event Action<float> onThreshold;
+
     public bool running = true;
 
     public TextMeshProUGUI energyDisplay;
+
+
+    [SerializeField] public ThresholdData[] energyThresholds;
+    int currentThresholdIndex = 0;
 
     private void Awake() {
         remainingEnergy = initialEnergy;
@@ -42,6 +50,10 @@ public class EnergyManager : MonoBehaviour
         formattedEnergy = Mathf.FloorToInt(remainingEnergy);
         formattedEnergyDrained = Mathf.FloorToInt(energyDrained);
         energyDisplay.text = string.Format("Energy: {0}", formattedEnergy);
+        if(formattedEnergyDrained > energyThresholds[currentThresholdIndex].thresholdProc) {
+            onThreshold?.Invoke(energyThresholds[currentThresholdIndex].lightMultiplier);
+            currentThresholdIndex++;
+        }
     }
 
     private IEnumerator UpgradeDrainMultiplier(float eDrainUpgTime){

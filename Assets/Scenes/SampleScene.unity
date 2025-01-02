@@ -233,8 +233,7 @@ MonoBehaviour:
     m_Bits: 8
   cumulatedCurrency: 0
   cumulatedEnergy: 0
-  firstMultiplier: 0
-  firstMultiplierReq: 0
+  thresholdLightMultiplier: 0
 --- !u!58 &635907066
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -785,7 +784,13 @@ MonoBehaviour:
   energyDrainMultiplier: 0
   energyDrainMultiplierUpgrade: 0.1
   energyDrainUpgradeTime: 2
+  running: 1
   energyDisplay: {fileID: 734759366}
+  energyThresholds:
+  - thresholdProc: 15
+    lightMultiplier: 2
+  - thresholdProc: 1000
+    lightMultiplier: 3
 --- !u!4 &1621406695
 Transform:
   m_ObjectHideFlags: 0

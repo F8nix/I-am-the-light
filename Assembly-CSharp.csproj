@@ -71,6 +71,7 @@
     <Compile Include="Assets/LightSpawnerManager.cs" />
     <Compile Include="Assets/EnergyManager.cs" />
     <Compile Include="Assets/StructsNOtherData/MultiplierData.cs" />
+    <Compile Include="Assets/StructsNOtherData/ThresholdData.cs" />
     <Compile Include="Assets/LightCurrencyOne.cs" />
     <Compile Include="Assets/LightPickupGraphical.cs" />
     <Compile Include="Assets/StructsNOtherData/LightData.cs" />

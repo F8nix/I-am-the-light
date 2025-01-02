@@ -21,15 +21,18 @@ public class LightPickupLogical : MonoBehaviour
 
     public int cumulatedCurrency;
     public float cumulatedEnergy;
-    public float firstMultiplier;
-    public int firstMultiplierReq;
+    //public float firstMultiplier;
+    //public int firstMultiplierReq;
+
+    public float thresholdLightMultiplier;
 
 
     void Start()
     {
         radius = gameObject.GetComponent<CircleCollider2D>().radius;
-        firstMultiplier = 1.2f;
-        firstMultiplierReq = 5;
+        //firstMultiplier = 1.2f;
+        //firstMultiplierReq = 5;
+        thresholdLightMultiplier = 1;
     }
 
     // Update is called once per frame
@@ -40,9 +43,11 @@ public class LightPickupLogical : MonoBehaviour
 
     private void OnEnable() {
         lightPickupGraphical.onDissappearence += PickupLight;
+        energyManagerRef.onThreshold += SetThresholdMultiplier;
     }
     private void OnDisable() {
         lightPickupGraphical.onDissappearence -= PickupLight;
+        energyManagerRef.onThreshold -= SetThresholdMultiplier;
     }
 
 
@@ -67,12 +72,12 @@ public class LightPickupLogical : MonoBehaviour
         }
         multiplier = CalculateMultiplier(lightsToPickUp.Length);
         if(multiplier > 0){
-            playerLightCurrency.CurrentLight += multiplier * cumulatedCurrency;
+            playerLightCurrency.CurrentLight += multiplier * cumulatedCurrency * thresholdLightMultiplier;
             energyManagerRef.remainingEnergy += multiplier * cumulatedEnergy;
         } else {
             Debug.Log("CalcMulti func didn't work? Multiplier is: " + multiplier + " zero right?");
         }
-        Debug.Log("Current light: " + playerLightCurrency.CurrentLight + " Multiplier: " +multiplier);
+        Debug.Log("Current light: " + playerLightCurrency.CurrentLight + " Multiplier: " +multiplier + " Threshold multi: " + thresholdLightMultiplier);
         //DYnamic object pooling
     }
 
@@ -86,5 +91,9 @@ public class LightPickupLogical : MonoBehaviour
         return 1;
 
         //more multipliers = better handling, like with foreach and continue
+    }
+
+    private void SetThresholdMultiplier(float _thresholdLightMultiplier) {
+        thresholdLightMultiplier = _thresholdLightMultiplier;
     }
 }
