@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,14 +9,24 @@ public class LightPickupLogical : MonoBehaviour
     // Start is called before the first frame update
     
     public LightPickupGraphical lightPickupGraphical;
+    public PlayerLightCurrency playerLightCurrency;
 
     public float radius;
     public Collider2D[] lightsToPickUp;
 
     public LayerMask currencyLayer;
+
+
+    public int cumulatedCurrency;
+    public float firstMultiplier;
+    public int firstMultiplierReq;
+
+
     void Start()
     {
         radius = gameObject.GetComponent<CircleCollider2D>().radius;
+        firstMultiplier = 1.2f;
+        firstMultiplierReq = 5;
     }
 
     // Update is called once per frame
@@ -34,14 +45,37 @@ public class LightPickupLogical : MonoBehaviour
 
     public void PickupLight() {
         lightsToPickUp = Physics2D.OverlapCircleAll(transform.position, radius, currencyLayer);
+        
+        float multiplier = 0;
+        
         if(lightsToPickUp.Length < 1){
             Debug.Log("Nothing to pick up");
+            return;
         }
         foreach (Collider2D light in lightsToPickUp)
         {
-            Destroy(light.gameObject);
             LightSpawnerManager.Instance.currentLight--;
+            LightCurrencyOne currency = light.gameObject.GetComponent<LightCurrencyOne>();
+            cumulatedCurrency += currency.amount;
+            Destroy(light.gameObject);
         }
+        multiplier = CalculateMultiplier(lightsToPickUp.Length);
+        if(multiplier > 0){
+            playerLightCurrency.CurrentLight += multiplier * cumulatedCurrency;
+        } else {
+            Debug.Log("CalcMulti func didn't work? Multiplier is: " + multiplier + " zero right?");
+        }
+        Debug.Log("Current light: " + playerLightCurrency.CurrentLight);
         //DYnamic object pooling
+    }
+
+    private float CalculateMultiplier(int lightsGathered) {
+        if(lightsGathered >= firstMultiplierReq){
+            return firstMultiplier;
+        } else {
+            return 1;
+        }
+
+        //more multipliers = better handling, like with foreach and continue
     }
 }

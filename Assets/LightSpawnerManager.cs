@@ -55,7 +55,7 @@ public class LightSpawnerManager : MonoBehaviour
     void Update()
     {
         while(currentLight < maxLight) {
-            Debug.Log("Current: " + currentLight + " Max: " +maxLight);
+            //Debug.Log("Current: " + currentLight + " Max: " +maxLight);
             SpawnLight();
             currentLight++;
         }

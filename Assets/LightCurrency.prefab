@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2435645784863410046}
   - component: {fileID: 7652867081853117594}
   - component: {fileID: 4580177104374641588}
+  - component: {fileID: -3124620979286750440}
   m_Layer: 3
   m_Name: LightCurrency
   m_TagString: Untagged
@@ -120,3 +121,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-3124620979286750440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037389412627849356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7acc8565cf99d67ec975f6394fe0e5b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 1
