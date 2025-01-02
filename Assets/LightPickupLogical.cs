@@ -40,6 +40,8 @@ public class LightPickupLogical : MonoBehaviour
         foreach (Collider2D light in lightsToPickUp)
         {
             Destroy(light.gameObject);
+            LightSpawnerManager.Instance.currentLight--;
         }
+        //DYnamic object pooling
     }
 }

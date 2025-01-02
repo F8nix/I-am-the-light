@@ -33,7 +33,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PickupCircleIdle
-  m_Speed: 1
+  m_Speed: 0.05
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7924107316736603602}
@@ -60,7 +60,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PickupCircleFading
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5152724016844442526}
