@@ -71,6 +71,7 @@
     <Compile Include="Assets/LightData.cs" />
     <Compile Include="Assets/LightCurrencyOne.cs" />
     <Compile Include="Assets/LightPickupGraphical.cs" />
+    <Compile Include="Assets/MultiplierData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

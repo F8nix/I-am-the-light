@@ -169,6 +169,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446a3bf6d1bac9069a5852995dee5ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multipliersList:
+  - multiplierAmount: 3.3
+    multiplierProc: 30
+  - multiplierAmount: 2
+    multiplierProc: 23
+  - multiplierAmount: 1.5
+    multiplierProc: 15
+  - multiplierAmount: 1.2
+    multiplierProc: 8
   lightPickupGraphical: {fileID: 2111719260}
   playerLightCurrency: {fileID: 639675257}
   radius: 0
@@ -176,6 +185,9 @@ MonoBehaviour:
   currencyLayer:
     serializedVersion: 2
     m_Bits: 8
+  cumulatedCurrency: 0
+  firstMultiplier: 0
+  firstMultiplierReq: 0
 --- !u!58 &635907066
 CircleCollider2D:
   m_ObjectHideFlags: 0

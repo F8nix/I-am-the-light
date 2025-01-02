@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class LightPickupLogical : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] public List<MultiplierData> multipliersList = new List<MultiplierData>();
     
     public LightPickupGraphical lightPickupGraphical;
     public PlayerLightCurrency playerLightCurrency;
@@ -47,6 +47,7 @@ public class LightPickupLogical : MonoBehaviour
         lightsToPickUp = Physics2D.OverlapCircleAll(transform.position, radius, currencyLayer);
         
         float multiplier = 0;
+        cumulatedCurrency = 0;
         
         if(lightsToPickUp.Length < 1){
             Debug.Log("Nothing to pick up");
@@ -65,16 +66,18 @@ public class LightPickupLogical : MonoBehaviour
         } else {
             Debug.Log("CalcMulti func didn't work? Multiplier is: " + multiplier + " zero right?");
         }
-        Debug.Log("Current light: " + playerLightCurrency.CurrentLight);
+        Debug.Log("Current light: " + playerLightCurrency.CurrentLight + " Multiplier: " +multiplier);
         //DYnamic object pooling
     }
 
     private float CalculateMultiplier(int lightsGathered) {
-        if(lightsGathered >= firstMultiplierReq){
-            return firstMultiplier;
-        } else {
-            return 1;
+        foreach (MultiplierData multiplier in multipliersList)
+        {
+            if(lightsGathered >= multiplier.multiplierProc){
+                return multiplier.multiplierAmount;
+            }
         }
+        return 1;
 
         //more multipliers = better handling, like with foreach and continue
     }
