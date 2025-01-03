@@ -46,7 +46,7 @@ public class Item : MonoBehaviour
         
     }
 
-    public void SetAffixesRange(RarityEnum rarity){
+    private void SetAffixesRange(RarityEnum rarity){
         if (rarity == RarityEnum.Normal){
             prefixNumb = 0;
             suffixNumb = 0;

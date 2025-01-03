@@ -67,8 +67,10 @@
     <Compile Include="Assets/PlayerSpawnPoint.cs" />
     <Compile Include="Assets/PlayerController.cs" />
     <Compile Include="Assets/LightPickupLogical.cs" />
+    <Compile Include="Assets/ItemCrafter.cs" />
     <Compile Include="Assets/PlayerLightCurrency.cs" />
     <Compile Include="Assets/Item.cs" />
+    <Compile Include="Assets/ModifierTypeEnum.cs" />
     <Compile Include="Assets/LightSpawnerManager.cs" />
     <Compile Include="Assets/EnergyManager.cs" />
     <Compile Include="Assets/StructsNOtherData/MultiplierData.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Assets/LightCurrencyOne.cs" />
     <Compile Include="Assets/LightPickupGraphical.cs" />
     <Compile Include="Assets/RarityEnum.cs" />
+    <Compile Include="Assets/StructsNOtherData/ModifierData.cs" />
     <Compile Include="Assets/StructsNOtherData/LightData.cs" />
   </ItemGroup>
   <ItemGroup>
