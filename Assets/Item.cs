@@ -8,8 +8,8 @@ public class Item
 
     public (string, float) _implicit;
 
-    private Dictionary<int, (string, float)> prefixes;
-    private Dictionary<int, (string, float)> suffixes;
+    public List<(string, float)> prefixes;
+    public List<(string, float)> suffixes;
 
     //Normal Rarity
     public Item(RarityEnum rarity, (string, float) _implicit){
@@ -18,7 +18,7 @@ public class Item
     }
 
     //Magic and Rare
-    public Item(RarityEnum rarity, (string, float) _implicit, Dictionary<int, (string, float)> prefixes, Dictionary<int, (string, float)> suffixes){
+    public Item(RarityEnum rarity, (string, float) _implicit, List<(string, float)> prefixes, List<(string, float)> suffixes){
         this.rarity = rarity;
         this._implicit = _implicit;
         this.prefixes = prefixes;

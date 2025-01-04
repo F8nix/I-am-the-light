@@ -183,6 +183,16 @@ MonoBehaviour:
     modifierStrength: 0
     modifierMinStr: 69
     modifierMaxStr: 69
+  - modifierType: 1
+    modifierName: MaxEnergyInt
+    modifierStrength: 0
+    modifierMinStr: 10
+    modifierMaxStr: 30
+  - modifierType: 2
+    modifierName: MaxLightSpawnPercentage
+    modifierStrength: 0
+    modifierMinStr: 1
+    modifierMaxStr: 3
 --- !u!4 &525166125
 Transform:
   m_ObjectHideFlags: 0
