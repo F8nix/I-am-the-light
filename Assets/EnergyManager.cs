@@ -39,15 +39,17 @@ public class EnergyManager : MonoBehaviour
     {
         energyDrained = 0;
         energyDrainMultiplier = 1;
+        energyDrainMultiplierUpgrade = 0.1f;
         StartCoroutine(UpgradeDrainMultiplier(energyDrainUpgradeTime));
     }
 
     // Update is called once per frame
     void Update()
     {
-        remainingEnergy -= Time.deltaTime;
-        energyDrained += Time.deltaTime;
+        remainingEnergy -= Time.deltaTime * energyDrainMultiplier;
         formattedEnergy = Mathf.FloorToInt(remainingEnergy);
+
+        energyDrained += Time.deltaTime;
         formattedEnergyDrained = Mathf.FloorToInt(energyDrained);
         energyDisplay.text = string.Format("Energy: {0}", formattedEnergy);
         if(formattedEnergyDrained > energyThresholds[currentThresholdIndex].thresholdProc) {

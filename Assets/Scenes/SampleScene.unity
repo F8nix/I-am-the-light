@@ -154,10 +154,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifiers:
   - modifierType: 0
-    modifierName: 
+    modifierName: MaxEnergyInt
     modifierStrength: 0
-    modifierMinStr: 0
-    modifierMaxStr: 0
+    modifierMinStr: 20
+    modifierMaxStr: 100
+  - modifierType: 0
+    modifierName: MaxLightSpawnInt
+    modifierStrength: 0
+    modifierMinStr: 5
+    modifierMaxStr: 15
+  - modifierType: 1
+    modifierName: MaxEnergyPercent
+    modifierStrength: 0
+    modifierMinStr: 1
+    modifierMaxStr: 8
+  - modifierType: 1
+    modifierName: EnergyDrainReduciton
+    modifierStrength: 0
+    modifierMinStr: 0.05
+    modifierMaxStr: 0.1
+  - modifierType: 2
+    modifierName: LightAmountBonus
+    modifierStrength: 0
+    modifierMinStr: 1
+    modifierMaxStr: 1
+  - modifierType: 2
+    modifierName: LightSpawnRate
+    modifierStrength: 0
+    modifierMinStr: 69
+    modifierMaxStr: 69
 --- !u!4 &525166125
 Transform:
   m_ObjectHideFlags: 0
@@ -832,7 +857,7 @@ MonoBehaviour:
   energyDrained: 0
   formattedEnergyDrained: 0
   energyDrainMultiplier: 0
-  energyDrainMultiplierUpgrade: 0.1
+  energyDrainMultiplierUpgrade: 0
   energyDrainUpgradeTime: 2
   running: 1
   energyDisplay: {fileID: 734759366}

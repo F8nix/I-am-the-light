@@ -12,7 +12,7 @@ public class ModifierData
     public float modifierMaxStr;
 
     private void Start() {
-        SetModifierStrength();
+
     }
 
     public void SetModifierStrength() {

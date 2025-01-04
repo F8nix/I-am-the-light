@@ -79,6 +79,7 @@
     <Compile Include="Assets/LightPickupGraphical.cs" />
     <Compile Include="Assets/RarityEnum.cs" />
     <Compile Include="Assets/StructsNOtherData/ModifierData.cs" />
+    <Compile Include="Assets/HelleyeExtentions.cs" />
     <Compile Include="Assets/StructsNOtherData/LightData.cs" />
   </ItemGroup>
   <ItemGroup>
