@@ -152,47 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c11740c9a8e61252b0fdbb8c2ae0d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifiers:
-  - modifierType: 0
-    modifierName: MaxEnergyInt
-    modifierStrength: 0
-    modifierMinStr: 20
-    modifierMaxStr: 100
-  - modifierType: 0
-    modifierName: MaxLightSpawnInt
-    modifierStrength: 0
-    modifierMinStr: 5
-    modifierMaxStr: 15
-  - modifierType: 1
-    modifierName: MaxEnergyPercent
-    modifierStrength: 0
-    modifierMinStr: 1
-    modifierMaxStr: 8
-  - modifierType: 1
-    modifierName: EnergyDrainReduciton
-    modifierStrength: 0
-    modifierMinStr: 0.05
-    modifierMaxStr: 0.1
-  - modifierType: 2
-    modifierName: LightAmountBonus
-    modifierStrength: 0
-    modifierMinStr: 1
-    modifierMaxStr: 1
-  - modifierType: 2
-    modifierName: LightSpawnRate
-    modifierStrength: 0
-    modifierMinStr: 69
-    modifierMaxStr: 69
-  - modifierType: 1
-    modifierName: MaxEnergyInt
-    modifierStrength: 0
-    modifierMinStr: 10
-    modifierMaxStr: 30
-  - modifierType: 2
-    modifierName: MaxLightSpawnPercentage
-    modifierStrength: 0
-    modifierMinStr: 1
-    modifierMaxStr: 3
+  modifiersData:
+  - {fileID: 11400000, guid: d7da5658e9d7e5202bbf43dcc4cb436c, type: 2}
+  - {fileID: 11400000, guid: 5403b819e18a09ccb82fa467d1f35b82, type: 2}
 --- !u!4 &525166125
 Transform:
   m_ObjectHideFlags: 0
