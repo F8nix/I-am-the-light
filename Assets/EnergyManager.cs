@@ -26,8 +26,8 @@ public class EnergyManager : MonoBehaviour
     public TextMeshProUGUI energyDisplay;
 
 
-    [SerializeField] public ThresholdData[] energyThresholds;
-    int currentThresholdIndex = 0;
+
+    
 
     private void Awake() {
         remainingEnergy = initialEnergy;
@@ -52,9 +52,9 @@ public class EnergyManager : MonoBehaviour
         energyDrained += Time.deltaTime;
         formattedEnergyDrained = Mathf.FloorToInt(energyDrained);
         energyDisplay.text = string.Format("Energy: {0}", formattedEnergy);
-        if(formattedEnergyDrained > energyThresholds[currentThresholdIndex].thresholdProc) {
-            onThreshold?.Invoke(energyThresholds[currentThresholdIndex].lightMultiplier);
-            currentThresholdIndex++;
+        if(formattedEnergyDrained > ArenaThresholdManager.Instance.arenaThresholds[ArenaThresholdManager.Instance.currentThresholdIndex].thresholdProc) {
+            onThreshold?.Invoke(ArenaThresholdManager.Instance.arenaThresholds[ArenaThresholdManager.Instance.currentThresholdIndex].lightMultiplier);
+            ArenaThresholdManager.Instance.currentThresholdIndex++;
         }
     }
 
@@ -72,4 +72,6 @@ public class EnergyManager : MonoBehaviour
             StartCoroutine(UpgradeDrainMultiplier(energyDrainUpgradeTime));
         }
     }
+
+    //energyManagerRef.remainingEnergy += multiplier * cumulatedEnergy;
 }

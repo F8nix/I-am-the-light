@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22db3b8ec0db91b38875948f7ded2e81, type: 3}
+  m_Name: EnergyItemDataT1
+  m_EditorClassIdentifier: 
+  modifiers:
+  - {fileID: 11400000, guid: 66d451553657b2a91a291e2c91e91c4c, type: 2}
+  - {fileID: 11400000, guid: 7e88a16442cf036b0a2f5582f7a9ae71, type: 2}
+  - {fileID: 11400000, guid: 2b85378fe97dafb5b96a1bfc0ba84765, type: 2}
+  - {fileID: 11400000, guid: 53866feca04a6f3e88bc2116eb801317, type: 2}
+  - {fileID: 11400000, guid: 2777d3f698b3704d09ea94d540f3aa08, type: 2}
+  - {fileID: 11400000, guid: bb067eedfc7364f85826a397c438b631, type: 2}
+  - {fileID: 11400000, guid: b5944c81341491d49bb77aad60a06c9e, type: 2}
+  itemType: 0
+  itemTier: 0

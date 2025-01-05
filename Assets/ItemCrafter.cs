@@ -61,20 +61,19 @@ public class ItemCrafter : MonoBehaviour
         }
     }
 
-    private (string, float) GetRandomModifier(ModifierTypeEnum _modifierType, List<ModifierData> modifiers) {
-        ModifierData randomModifier;
+    private ModifierData GetRandomModifier(ModifierTypeEnum _modifierType, List<ModifierDataSO> modifiers) {
+        ModifierDataSO randomModifier;
         randomModifier = modifiers.Where((modifier)=>modifier.modifierType == _modifierType).RandomElement();
         if (randomModifier == null){
             Debug.Log("GetRandomModifier empty randomModifier");
         }
-        randomModifier.SetModifierStrength();
-
-        return (randomModifier.modifierName, randomModifier.modifierStrength);
+        ModifierData modifier = new ModifierData(randomModifier);
+        return modifier;
     }
 
-    private List<(string, float)> GetRandomModifier(ModifierTypeEnum _modifierType, List<ModifierData> modifiers, int modifiersAmount) {
-        List<ModifierData> modifiersList = new List<ModifierData>();
-        ModifierData randomModifier;
+    private List<ModifierData> GetRandomModifier(ModifierTypeEnum _modifierType, List<ModifierDataSO> modifiers, int modifiersAmount) {
+        List<ModifierDataSO> modifiersList = new List<ModifierDataSO>();
+        ModifierDataSO randomModifier;
             for (int i = 1; i < modifiersAmount + 1; i++){
                 randomModifier = modifiers.
                     Where(modifier => modifier.modifierType == _modifierType).
@@ -83,10 +82,9 @@ public class ItemCrafter : MonoBehaviour
                     if (randomModifier == null){
                         Debug.Log("GetRandomModifier empty randomModifier");
                     }
-                randomModifier.SetModifierStrength();
                 modifiersList.Add(randomModifier);
             }
-        return modifiersList.Select(modifier => (modifier.modifierName, modifier.modifierStrength)).ToList();
+        return modifiersList.Select(modifier => new ModifierData(modifier)).ToList();
     }
 
     private (int, int) SetAffixesRange(RarityEnum rarity){
@@ -111,17 +109,11 @@ public class ItemCrafter : MonoBehaviour
         craftedRarity = RarityEnum.Magic;
         //test
         (int prefixesAmount, int suffixesAmount) = SetAffixesRange(craftedRarity);
-        List<ModifierData> modifiers = modifiersData.Find(item => item.itemType == itemType).modifiers;
-        List<(string, float)> prefixesList = GetRandomModifier(ModifierTypeEnum.Prefix, modifiers, prefixesAmount);
-        List<(string, float)> suffixesList = GetRandomModifier(ModifierTypeEnum.Suffix, modifiers, suffixesAmount);
+        List<ModifierDataSO> modifiers = modifiersData.Find(item => item.itemType == itemType).modifiers;
+        List<ModifierData> prefixesList = GetRandomModifier(ModifierTypeEnum.Prefix, modifiers, prefixesAmount);
+        List<ModifierData> suffixesList = GetRandomModifier(ModifierTypeEnum.Suffix, modifiers, suffixesAmount);
         Item i = new Item(craftedRarity, GetRandomModifier(ModifierTypeEnum.Implicit, modifiers), prefixesList, suffixesList);
-        Debug.Log(i.rarity + " " + i._implicit.Item1 + " " + i._implicit.Item2);
-            for (int j = 0; j < i.prefixes.Count; j++){
-                Debug.Log("Prefix " + i.prefixes[j].Item1 + " " + i.prefixes[j].Item2);
-            }
-            for (int k = 0; k < i.suffixes.Count; k++){
-                Debug.Log("Suffix " + i.suffixes[k].Item1 + " " + i.suffixes[k].Item2);
-            }
+        
         return i;
             /* item test
             Debug.Log(i.rarity + " " + i._implicit.Item1 + " " + i._implicit.Item2);

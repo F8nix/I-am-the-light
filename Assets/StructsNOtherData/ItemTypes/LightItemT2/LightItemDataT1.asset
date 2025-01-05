@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22db3b8ec0db91b38875948f7ded2e81, type: 3}
+  m_Name: LightItemDataT1
+  m_EditorClassIdentifier: 
+  modifiers:
+  - {fileID: 11400000, guid: 0f77fbc671ad298708a1be734df2c95c, type: 2}
+  - {fileID: 11400000, guid: 100b1c0a8926db9118666f3e5f8f26ae, type: 2}
+  - {fileID: 11400000, guid: b0d2fca43342b05c5ae7df710412233b, type: 2}
+  - {fileID: 11400000, guid: 9c77854da817b9750806b91a0f1f52a1, type: 2}
+  - {fileID: 11400000, guid: 2798829e2d105b1bf896280f00158a28, type: 2}
+  - {fileID: 11400000, guid: 8aede8ccafe11fd68bf26c4170039e72, type: 2}
+  - {fileID: 11400000, guid: 902a270c7044c99a5a6c939ad3334d05, type: 2}
+  - {fileID: 11400000, guid: ddce6b2d5d53540c7bf67255cf1b0e07, type: 2}
+  itemType: 1
+  itemTier: 0

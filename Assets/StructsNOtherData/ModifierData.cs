@@ -1,21 +1,10 @@
 using UnityEngine;
-
-[System.Serializable]
 public class ModifierData
 {
-    public ModifierTypeEnum modifierType;
-
-    public string modifierName;
-
+    public ModifierDataSO modifierData;
     public float modifierStrength;
-    public float modifierMinStr;
-    public float modifierMaxStr;
-
-    private void Start() {
-
-    }
-
-    public void SetModifierStrength() {
-        modifierStrength = Random.Range(modifierMinStr, modifierMaxStr);
+    public ModifierData (ModifierDataSO data) {
+        modifierData = data;
+        modifierStrength = Random.Range(modifierData.modifierMinStr, modifierData.modifierMaxStr + 1);
     }
 }

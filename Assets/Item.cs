@@ -6,19 +6,19 @@ public class Item
 {
     public RarityEnum rarity;
 
-    public (string, float) _implicit;
+    public ModifierData _implicit;
 
-    public List<(string, float)> prefixes;
-    public List<(string, float)> suffixes;
+    public List<ModifierData> prefixes;
+    public List<ModifierData> suffixes;
 
     //Normal Rarity
-    public Item(RarityEnum rarity, (string, float) _implicit){
+    public Item(RarityEnum rarity, ModifierData _implicit){
         this.rarity = rarity;
         this._implicit = _implicit;
     }
 
     //Magic and Rare
-    public Item(RarityEnum rarity, (string, float) _implicit, List<(string, float)> prefixes, List<(string, float)> suffixes){
+    public Item(RarityEnum rarity, ModifierData _implicit, List<ModifierData> prefixes, List<ModifierData> suffixes){
         this.rarity = rarity;
         this._implicit = _implicit;
         this.prefixes = prefixes;

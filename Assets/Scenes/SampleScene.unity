@@ -123,6 +123,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &384106320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 384106322}
+  - component: {fileID: 384106321}
+  m_Layer: 0
+  m_Name: LightManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &384106321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384106320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6703715580d472090351958c0463cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightAmountGained: 0
+  multipliersList:
+  - multiplierAmount: 3.3
+    multiplierProc: 30
+  - multiplierAmount: 2
+    multiplierProc: 23
+  - multiplierAmount: 1.5
+    multiplierProc: 15
+  - multiplierAmount: 1.2
+    multiplierProc: 8
+--- !u!4 &384106322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384106320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.42479157, y: 0.3130716, z: -0.6800635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525166123
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,25 +316,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyManagerRef: {fileID: 1621406694}
-  multipliersList:
-  - multiplierAmount: 3.3
-    multiplierProc: 30
-  - multiplierAmount: 2
-    multiplierProc: 23
-  - multiplierAmount: 1.5
-    multiplierProc: 15
-  - multiplierAmount: 1.2
-    multiplierProc: 8
+  lightManagerRef: {fileID: 384106321}
   lightPickupGraphical: {fileID: 2111719260}
   playerLightCurrency: {fileID: 639675257}
-  radius: 0
+  baseRadius: 0
   lightsToPickUp: []
   currencyLayer:
     serializedVersion: 2
     m_Bits: 8
-  cumulatedCurrency: 0
+  cumulatedLight: 0
   cumulatedEnergy: 0
-  thresholdLightMultiplier: 0
 --- !u!58 &635907066
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -793,6 +838,58 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1311026352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1311026354}
+  - component: {fileID: 1311026353}
+  m_Layer: 0
+  m_Name: ArenaManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1311026353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311026352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4485d9c8991f2f1028955ac05db2f2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyManagerRef: {fileID: 1621406694}
+  arenaThresholds:
+  - thresholdProc: 15
+    lightMultiplier: 2
+  - thresholdProc: 1000
+    lightMultiplier: 3
+  currentThresholdIndex: 0
+  thresholdLightMultiplier: 1
+--- !u!4 &1311026354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311026352}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.42479157, y: 0.3130716, z: -0.6800635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1621406693
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,11 +930,6 @@ MonoBehaviour:
   energyDrainUpgradeTime: 2
   running: 1
   energyDisplay: {fileID: 734759366}
-  energyThresholds:
-  - thresholdProc: 15
-    lightMultiplier: 2
-  - thresholdProc: 1000
-    lightMultiplier: 3
 --- !u!4 &1621406695
 Transform:
   m_ObjectHideFlags: 0
@@ -1154,3 +1246,5 @@ SceneRoots:
   - {fileID: 1896947876}
   - {fileID: 552315156}
   - {fileID: 525166125}
+  - {fileID: 384106322}
+  - {fileID: 1311026354}
