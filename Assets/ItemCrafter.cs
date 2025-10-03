@@ -12,8 +12,6 @@ public class ItemCrafter : MonoBehaviour
     private int magicChance;
     private int rareChance;
 
-    private RarityEnum craftedRarity;
-
     private const int magicPrefixMin = 1;
     private const int magicPrefixMax = 2;
     private const int magicSuffixMin = 1;
@@ -25,13 +23,15 @@ public class ItemCrafter : MonoBehaviour
     private const int rareSuffixMax = 3;
 
     [SerializeField] public List<ItemTypeSO> modifiersData = new List<ItemTypeSO>();
+    public List<Item> testItems = new List<Item>();
     void Start()
     {
         normalChance = 79;
         magicChance = 18;
         rareChance = 3;
-        CraftItem(ItemTypeEnum.Energy);
-        CraftItem(ItemTypeEnum.Light);
+
+        testItems.Add(CraftItem(ItemTypeEnum.Energy));
+        testItems.Add(CraftItem(ItemTypeEnum.Light));
     }
 
     private void Awake() 
@@ -106,23 +106,25 @@ public class ItemCrafter : MonoBehaviour
     }
 
     public Item CraftItem(ItemTypeEnum itemType) {
-        craftedRarity = RarityEnum.Magic;
+        RarityEnum craftedRarity = RarityEnum.Magic;
         //test
         (int prefixesAmount, int suffixesAmount) = SetAffixesRange(craftedRarity);
         List<ModifierDataSO> modifiers = modifiersData.Find(item => item.itemType == itemType).modifiers;
         List<ModifierData> prefixesList = GetRandomModifier(ModifierTypeEnum.Prefix, modifiers, prefixesAmount);
         List<ModifierData> suffixesList = GetRandomModifier(ModifierTypeEnum.Suffix, modifiers, suffixesAmount);
-        Item i = new Item(craftedRarity, GetRandomModifier(ModifierTypeEnum.Implicit, modifiers), prefixesList, suffixesList);
+        Item item = new Item(craftedRarity, GetRandomModifier(ModifierTypeEnum.Implicit, modifiers), prefixesList, suffixesList);
         
-        return i;
-            /* item test
-            Debug.Log(i.rarity + " " + i._implicit.Item1 + " " + i._implicit.Item2);
-            for (int j = 0; j < i.prefixes.Count; j++){
-                Debug.Log("Prefix " + i.prefixes[j].Item1 + " " + i.prefixes[j].Item2);
+            Debug.Log(item.rarity + " " + item._implicit.modifierData.modifierName + " " + item._implicit.modifierStrength);
+            for (int i = 0; i < item.prefixes.Count; i++){
+                Debug.Log("Prefix " + item.prefixes[i].modifierData.modifierName + " " + item.prefixes[i].modifierStrength);
             }
-            for (int k = 0; k < i.suffixes.Count; k++){
-                Debug.Log("Suffix " + i.suffixes[k].Item1 + " " + i.suffixes[k].Item2);
+            for (int i = 0; i < item.suffixes.Count; i++){
+                Debug.Log("Suffix " + item.suffixes[i].modifierData.modifierName + " " + item.suffixes[i].modifierStrength);
             }
-            */
+
+        return item;
+            // item test
+            
+            
     }
 }
